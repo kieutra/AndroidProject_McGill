@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="11dp"
+        android:background="#c0c0c0"
+        app:layout_constraintBottom_toBottomOf="@+id/quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantity"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="411dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="180dp"
+        android:background="#c0c0c0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="44dp"
+        android:text="Item Name"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/quantity"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="Quantity"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="44dp"
+        android:text="Add"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/item_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/radioGroup2"
+        app:layout_constraintEnd_toStartOf="@+id/item_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup2">
+
+
+        <TextView
+            android:id="@+id/milk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@string/milk"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="96dp" />
+
+        <TextView
+            android:id="@+id/egg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/egg"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="163dp" />
+
+        <TextView
+            android:id="@+id/beef"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/beef"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="219dp" />
+
+        <TextView
+            android:id="@+id/soda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/soda"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="278dp" />
+
+        <TextView
+            android:id="@+id/biscuit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/biscuit"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="337dp" />
+
+        <TextView
+            android:id="@+id/fruit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/fruit"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="401dp" />
+
+
+        <TextView
+            android:id="@+id/veges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/veges"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="465dp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/check_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="92dp"
+        android:text="@string/check_out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="92dp"
+        android:text="@string/total"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/check_out" />
+
+    <TextView
+        android:id="@+id/sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/sum"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/total"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="100dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="115dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toStartOf="@+id/add"
+        app:layout_constraintStart_toEndOf="@+id/quantity"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/E_milk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:ems="4"
+            android:inputType="number"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/milk"
+            app:layout_constraintTop_toBottomOf="@+id/quantity" />
+
+        <EditText
+            android:id="@+id/E_egg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:inputType="number"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/egg"
+            app:layout_constraintTop_toBottomOf="@+id/E_milk" />
+
+        <EditText
+            android:id="@+id/E_beef"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:inputType="number"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/beef"
+            app:layout_constraintTop_toBottomOf="@+id/E_egg" />
+
+        <EditText
+            android:id="@+id/E_soda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:inputType="number"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/soda"
+            app:layout_constraintTop_toBottomOf="@+id/E_beef" />
+
+        <EditText
+            android:id="@+id/E_biscuit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:inputType="number"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/biscuit"
+            app:layout_constraintTop_toBottomOf="@+id/E_soda" />
+
+        <EditText
+            android:id="@+id/E_fruit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:inputType="number"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/fruit"
+            app:layout_constraintTop_toBottomOf="@+id/E_biscuit" />
+
+        <EditText
+            android:id="@+id/E_veges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:inputType="number"
+            android:text=""
+            app:layout_constraintStart_toEndOf="@+id/veges"
+            app:layout_constraintTop_toBottomOf="@+id/E_fruit" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="100dp"
+        android:layout_height="350dp"
+
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view">
+
+        <CheckBox
+            android:id="@+id/checkMilk"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="0dp"
+            android:text=""
+            tools:layout_editor_absoluteX="363dp"
+            tools:layout_editor_absoluteY="91dp" />
+
+        <CheckBox
+            android:id="@+id/checkEgg"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text=""
+            tools:layout_editor_absoluteX="327dp"
+            tools:layout_editor_absoluteY="155dp" />
+
+        <CheckBox
+            android:id="@+id/checkBeef"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text=""
+            tools:layout_editor_absoluteX="323dp"
+            tools:layout_editor_absoluteY="215dp" />
+
+        <CheckBox
+            android:id="@+id/checkSoda"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text=""
+            tools:layout_editor_absoluteX="323dp"
+            tools:layout_editor_absoluteY="285dp" />
+
+        <CheckBox
+            android:id="@+id/checkBiscuit"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text=""
+            tools:layout_editor_absoluteX="323dp"
+            tools:layout_editor_absoluteY="349dp" />
+
+        <CheckBox
+            android:id="@+id/checkFruit"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text=""
+            tools:layout_editor_absoluteX="323dp"
+            tools:layout_editor_absoluteY="405dp" />
+
+        <CheckBox
+            android:id="@+id/checkVeges"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text=""
+            tools:layout_editor_absoluteX="327dp"
+            tools:layout_editor_absoluteY="466dp" />
+
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
