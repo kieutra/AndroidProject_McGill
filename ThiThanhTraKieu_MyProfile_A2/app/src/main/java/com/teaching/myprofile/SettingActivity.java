@@ -54,7 +54,7 @@ public class SettingActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.putExtra("theme", s);
+                        intent.putExtra(storedValue, s);
                         startActivity(intent);
                     }
                 });

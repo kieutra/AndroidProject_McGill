@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         layout = findViewById(R.id.main_layout);
         tv = (TextView)findViewById(R.id.aboutMe);
         Intent i = getIntent();
-        if(i != null && i.getStringExtra("theme")!=null){
-            String s = i.getStringExtra("theme");
+        if(i != null && i.getStringExtra(storedValue)!=null){
+            String s = i.getStringExtra(storedValue);
             getSeason(s);
         }
     }
