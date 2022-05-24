@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton add;
@@ -25,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     String leftStr ="";
     String rightStr ="";
-    int finalResult;
-    int Left =1;
+    int left= 1;
     ConstraintLayout layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         result = findViewById(R.id.textView5);
 
 
-
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 else if (i == R.id.sub) operator.setText("-");
                 else if (i == R.id.multi) operator.setText("*");
                 else operator.setText("/");
+
             }
         });
     }
@@ -70,60 +71,55 @@ public class MainActivity extends AppCompatActivity {
     public void clickToggle(View view){
         if (((ToggleButton) view).isChecked()) {
                     toggleButton.setTextOn("RIGHT");
-                    Left =0;
+                    left = 0;
         } else {
                     toggleButton.setTextOff("LEFT");
-                    Left =1;
+                    left = 1;
         }
     }
     public void clickButton(View view) {
         if (view instanceof Button) {
             Button button = (Button) view;
-
-            if (Left==0) {
-                rightStr += ((Button) view).getText().toString();
-                rightOP.setText(rightStr);
-            } else{
+            if (left ==1) {
                 leftStr += ((Button) view).getText().toString();
                 leftOP.setText(leftStr);
-
+            } else {
+                rightStr += ((Button) view).getText().toString();
+                rightOP.setText(rightStr);
             }
         }
 
     }
 
     public void clickResult(View view){
-        if(leftOP.getText().toString().length()==0|| leftOP.getText().toString().length()==0){
-            result.setText("Result");
+        int finalResult;
+        if(leftOP.getText().toString().equals("Left Operand")|| rightOP.getText().toString().equals("Right Operand")){
             Toast.makeText(this,"The operand cannot be empty", Toast.LENGTH_SHORT).show();
-            return;
         }else{
             if(operator.getText().toString().equals("+")){
                 finalResult = Integer.parseInt(leftOP.getText().toString()) + Integer.parseInt(rightOP.getText().toString());
+                result.setText(""+finalResult);
             }
-            else if(operator.getText().toString().equals("-")){
+            if(operator.getText().toString().equals("-")){
                 finalResult = Integer.parseInt(leftOP.getText().toString()) - Integer.parseInt(rightOP.getText().toString());
+                result.setText(""+finalResult);
             }
-            else if(operator.getText().toString().equals("*")){
+            if(operator.getText().toString().equals("*")){
                 finalResult = Integer.parseInt(leftOP.getText().toString()) * Integer.parseInt(rightOP.getText().toString());
+                result.setText(""+finalResult);
             }
-            else{
-                operator.getText().toString().equals("/");
+            if(operator.getText().toString().equals("/")){
+                double divideResult;
                 if(rightOP.getText().toString().equals("0")){
-                    result.setText("Result");
                     Toast.makeText(this, "Cannot divide by 0", Toast.LENGTH_SHORT).show();
-                    return;
                 }else {
-                    double divideResult;
                     divideResult = Double.parseDouble(leftOP.getText().toString()) / Double.parseDouble(rightOP.getText().toString());
                     result.setText("" + divideResult);
-                    return;
                 }
             }
 
         }
 
-        result.setText("" + finalResult);
     }
 
     public void clickClearResult(View view){
@@ -133,31 +129,33 @@ public class MainActivity extends AppCompatActivity {
         rightOP.setText("Right Operand");
         result.setText("Result");
     }
-
     public void clickSwitch(View view){
         layout = findViewById(R.id.layout);
-        TextView [] array = {add, sub, multi, div, operator, equal};
-        TextView [] array2 = {leftOP, rightOP, result};
         if (((Switch) view).isChecked()){
             layout.setBackgroundColor(Color.DKGRAY);
-            leftOP.setHintTextColor(Color.WHITE);
-
-            for(int i=0; i<array.length; i++){
-                array[i].setTextColor(Color.WHITE);
-            }
-            for(int i=0; i<array2.length; i++){
-                array2[i].setHintTextColor(Color.WHITE);
-            }
+            add.setTextColor(Color.WHITE);
+            sub.setTextColor(Color.WHITE);
+            multi.setTextColor(Color.WHITE);
+            div.setTextColor(Color.WHITE);
+            leftOP.setTextColor(Color.WHITE);
+            rightOP.setTextColor(Color.WHITE);
+            operator.setTextColor(Color.WHITE);
+            equal.setTextColor(Color.WHITE);
+            result.setTextColor(Color.WHITE);
             ((Switch)view).setTextColor(Color.WHITE);
         }else{
             layout.setBackgroundColor(Color.WHITE);
-            for(int i=0; i<array.length; i++){
-                array[i].setTextColor(Color.BLACK);
-            }
-            for(int i=0; i<array2.length; i++){
-                array2[i].setHintTextColor(Color.BLACK);
-            }
+            add.setTextColor(Color.BLACK);
+            sub.setTextColor(Color.BLACK);
+            multi.setTextColor(Color.BLACK);
+            div.setTextColor(Color.BLACK);
+            leftOP.setTextColor(Color.BLACK);
+            rightOP.setTextColor(Color.BLACK);
+            operator.setTextColor(Color.BLACK);
+            equal.setTextColor(Color.BLACK);
+            result.setTextColor(Color.BLACK);
             ((Switch)view).setTextColor(Color.BLACK);
         }
     }
+
 }
