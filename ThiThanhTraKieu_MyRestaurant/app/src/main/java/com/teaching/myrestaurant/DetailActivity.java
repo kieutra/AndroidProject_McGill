@@ -37,12 +37,14 @@ public class DetailActivity extends AppCompatActivity {
     static int mochiTaro=0;
     static int mochiSakura=0;
     static int mochiMatcha=0;
+    static double totalMoneyDA =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE); //will hide the title
         getSupportActionBar().hide(); // hide the title bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); //enable full screen
+
         foodsName = new String[]{"pork Nem", "chicken Nem", "vegetarian Nem",
                 "pork Banh Mi", "chicken Banh Mi", "vegetarien Banh Mi",
                 "taro Bubble Tea", "matcha Bubble Tea", "chocolate Bubble Tea",
@@ -351,56 +353,56 @@ public class DetailActivity extends AppCompatActivity {
                     editor.apply();
                 }catch (Exception e){}
 
+                totalMoneyDA +=totalItem;
+
                 if(totalItem!=0){
                     Toast.makeText(DetailActivity.this, "The item is added", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(DetailActivity.this, FoodListActivity.class);
                     intent.putExtra("totalItem", totalItem);
                     startActivity(intent);
                     finish();
-
-
                 }
             }
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("DA", "start");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("DA", "restart");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("DA", "resume");
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.d("DA", "start");
+//    }
+//
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        Log.d("DA", "restart");
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d("DA", "resume");
+//
+//    }
 
     @Override
     protected void onPause() {
         super.onPause();
+        if(totalItem==0) {
+            Intent intent = new Intent(DetailActivity.this, FoodListActivity.class);
+            startActivity(intent);
+            finish();
+        }
         Log.d("DA", "pause");
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("DA", "stop");
-    }
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        Log.d("DA", "stop");
+//    }
 
 }
-
-
-//        SharedPreferences sf = getSharedPreferences("storedTotal",MODE_PRIVATE);
-//        SharedPreferences.Editor edit = sf.edit();
-//        edit.putFloat("total", total1);
-//        edit.apply();
 
 
 

@@ -53,14 +53,13 @@ public class CartActivity extends AppCompatActivity {
         clear=  findViewById(R.id.clear);
         myCart();
         clickClear();
-        Log.d("CA", "create");
+//        Log.d("CA", "create");
         clearStr="";
-
-
     }
 
     public void myCart() {
         //int size = sf.getInt("_size", 0);
+//NEM shopping cart
         if(DetailActivity.nemPork !=0) {
             SharedPreferences sf = getSharedPreferences("storednemPork", MODE_PRIVATE);
             for (int i = 0; i < 4; i++)
@@ -80,7 +79,7 @@ public class CartActivity extends AppCompatActivity {
         myArrayCart.add(new CartList(arr_nemvege.get(0), arr_nemvege.get(1), arr_nemvege.get(2), arr_nemvege.get(3)));
         }
 
-
+//BANH MI shopping cart
         if(DetailActivity.bmPork !=0){
             SharedPreferences sf = getSharedPreferences("storedbmPork", MODE_PRIVATE);
             for(int i = 0; i < 4; i++)
@@ -100,6 +99,7 @@ public class CartActivity extends AppCompatActivity {
             myArrayCart.add(new CartList(arr_bmvege.get(0), arr_bmvege.get(1), arr_bmvege.get(2), arr_bmvege.get(3)));
         }
 
+//BBTEA shopping cart
         if(DetailActivity.bbtChoco !=0){
             SharedPreferences sf = getSharedPreferences("storedbbtChoco", MODE_PRIVATE);
             for(int i = 0; i < 4; i++)
@@ -119,6 +119,7 @@ public class CartActivity extends AppCompatActivity {
             myArrayCart.add(new CartList(arr_bbttaro.get(0), arr_bbttaro.get(1), arr_bbttaro.get(2), arr_bbttaro.get(3)));
         }
 
+//MOCHI shopping cart
         if(DetailActivity.mochiMatcha !=0){
             SharedPreferences sf = getSharedPreferences("storedmochiMatcha", MODE_PRIVATE);
             for(int i = 0; i < 4; i++)
@@ -138,17 +139,18 @@ public class CartActivity extends AppCompatActivity {
             myArrayCart.add(new CartList(arr_mochitaro.get(0), arr_mochitaro.get(1), arr_mochitaro.get(2), arr_mochitaro.get(3)));
         }
 
+//food items List View
         CartListAdapter adapter = new CartListAdapter(this, myArrayCart);
         myListView.setAdapter(adapter);
 
-        //calculate Total Shopping Cart
-        total.setText("TOTAL: $ "+FoodListActivity.totalMoney);
+//calculate Total Shopping Cart
+        total.setText("TOTAL: $ "+DetailActivity.totalMoneyDA);
     }
+
     public void clickClear(){
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 CartListAdapter adapter = new CartListAdapter(CartActivity.this, myArrayCart);
                 myListView.setAdapter(adapter);
@@ -190,10 +192,9 @@ public class CartActivity extends AppCompatActivity {
                 sf_mochiSakura.edit().clear().apply();
 
 
-                    myArrayCart.removeAll(myArrayCart);
+                myArrayCart.removeAll(myArrayCart);
 
-
-                FoodListActivity.totalMoney=0;
+//Set up all static variables =0;
                 DetailActivity.nemChicken=0;
                 DetailActivity.nemPork=0;
                 DetailActivity.nemVege=0;
@@ -206,44 +207,43 @@ public class CartActivity extends AppCompatActivity {
                 DetailActivity.mochiTaro=0;
                 DetailActivity.mochiSakura=0;
                 DetailActivity.mochiMatcha=0;
+                DetailActivity.totalMoneyDA=0;
 
                 total.setText("TOTAL: $ 0.0");
 
                 clearStr="clear";
-
-
             }
         });
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("CA", "start");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.d("CA", "restart");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("CA", "resume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("CA", "pause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("CA", "stop");
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.d("CA", "start");
+//    }
+//
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        Log.d("CA", "restart");
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d("CA", "resume");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Log.d("CA", "pause");
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        Log.d("CA", "stop");
+//    }
 }
 
 

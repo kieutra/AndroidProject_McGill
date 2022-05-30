@@ -32,7 +32,7 @@ public class FoodListActivity extends AppCompatActivity {
     String[] banhmis = new String[]{"pork Banh Mi", "chicken Banh Mi", "vegetarien Banh Mi"};
     String[] bbteas = new String[]{"taro Bubble Tea", "matcha Bubble Tea", "chocolate Bubble Tea"};
     String[] mochis = new String[]{"matcha Mochi", "sakura Mochi", "taro Mochi"};
-    static double totalMoney;
+
     TextView total;
     Button seeCart;
 
@@ -45,22 +45,21 @@ public class FoodListActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_food_list);
 
-
-
         total = findViewById(R.id.totalFL);
         seeCart = findViewById(R.id.seeCart);
 
+      //  updateTotal();
+        total.setText("TOTAL: " + DetailActivity.totalMoneyDA);
+
+        reloadListView();
         getFrameLayout();
-
-        updateTotal();
-
         seeCartAct();
+
         Log.d("FL", "create");
     }
 
-
-
-    public void chooseListView(String[] str) {
+//Create Listview and Click items in Listview
+    public void createListView(String[] str) {
         mylist = findViewById(R.id.mylist);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.listview2, str);
         mylist.setAdapter(adapter);
@@ -76,16 +75,16 @@ public class FoodListActivity extends AppCompatActivity {
         });
     }
 
-
+//Display Listview based on user's choice
     public void getFrameLayout() {
         Intent intent = getIntent();
         String input;
         if (intent != null && intent.getStringExtra("framelayout") != null) {
             input = intent.getStringExtra("framelayout");
-            if (input.equals("nem")) chooseListView(nems);
-            else if (input.equals("banhmi")) chooseListView(banhmis);
-            else if (input.equals("bbtea")) chooseListView(bbteas);
-            else chooseListView(mochis);
+            if (input.equals("nem")) createListView(nems);
+            else if (input.equals("banhmi")) createListView(banhmis);
+            else if (input.equals("bbtea")) createListView(bbteas);
+            else createListView(mochis);
 
             SharedPreferences sf = getSharedPreferences("storedInput", MODE_PRIVATE);
             SharedPreferences.Editor edit = sf.edit();
@@ -94,29 +93,18 @@ public class FoodListActivity extends AppCompatActivity {
         }
     }
 
+//Reload listview
     public void reloadListView() {
         SharedPreferences sf = getSharedPreferences("storedInput", MODE_PRIVATE);
         String input = sf.getString("storedInputvalue", "");
-        if (input.equals("nem")) chooseListView(nems);
-        else if (input.equals("banhmi")) chooseListView(banhmis);
-        else if (input.equals("bbtea")) chooseListView(bbteas);
-        else chooseListView(mochis);
-    }
-
-    public void updateTotal() {
-        reloadListView();
-        Intent intent = getIntent();
-        if (intent != null && intent.getExtras() != null) {
-            totalMoney += intent.getExtras().getDouble("totalItem");
-            total.setText("TOTAL: " + totalMoney);
-        }
-//        else if(intent !=null && intent.getDoubleExtra("clear", 0)==0){
-//            totalMoney=0;
-//            total.setText("TOTAL: 0.0");
-//        }
+        if (input.equals("nem")) createListView(nems);
+        else if (input.equals("banhmi")) createListView(banhmis);
+        else if (input.equals("bbtea")) createListView(bbteas);
+        else createListView(mochis);
 
     }
 
+//Go to CartActivity
     public void seeCartAct(){
         seeCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,38 +115,39 @@ public class FoodListActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("FL", "start");
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.d("FL", "start");
+//    }
 
     @Override
     protected void onRestart() {
         super.onRestart();
         if(CartActivity.clearStr.equals("clear")){
-            totalMoney =0;
+            //totalMoney =0;
             total.setText("TOTAL: 0.0");
-
         }
         Log.d("FL", "restart");
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d("FL", "resume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d("FL", "pause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d("FL", "stop");
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        Log.d("FL", "resume");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//
+//        super.onPause();
+//        Log.d("FL", "pause");
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//            Log.d("FL", "stop");
+//    }
 }

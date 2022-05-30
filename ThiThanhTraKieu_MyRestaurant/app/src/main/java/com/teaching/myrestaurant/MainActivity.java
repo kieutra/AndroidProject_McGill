@@ -13,13 +13,10 @@ import android.widget.FrameLayout;
 public class MainActivity extends AppCompatActivity {
     FrameLayout nem, banhmi, bbtea, mochi;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
     public void clickFrame(View view) {
@@ -28,20 +25,16 @@ public class MainActivity extends AppCompatActivity {
         bbtea = findViewById(R.id.bbtea);
         mochi = findViewById(R.id.mochi);
 
-        FrameLayout[] frames = {nem, banhmi, bbtea, mochi};
-        if (view instanceof FrameLayout) {
-            FrameLayout frameLayout = (FrameLayout) view;
-            Intent intent = new Intent(MainActivity.this, FoodListActivity.class);
-            if (view == nem) {
-                intent.putExtra("framelayout", "nem");
-            } else if (view == banhmi) {
-                intent.putExtra("framelayout", "banhmi");
-            } else if (view == bbtea) {
-                intent.putExtra("framelayout", "bbtea");
-            } else {
-                intent.putExtra("framelayout", "mochi");
-            }
-            startActivity(intent);
+        Intent intent = new Intent(MainActivity.this, FoodListActivity.class);
+        if (view == nem) {
+            intent.putExtra("framelayout", "nem");
+        } else if (view == banhmi) {
+            intent.putExtra("framelayout", "banhmi");
+        } else if (view == bbtea) {
+            intent.putExtra("framelayout", "bbtea");
+        } else {
+            intent.putExtra("framelayout", "mochi");
         }
-    }
+        startActivity(intent);
+        }
 }
