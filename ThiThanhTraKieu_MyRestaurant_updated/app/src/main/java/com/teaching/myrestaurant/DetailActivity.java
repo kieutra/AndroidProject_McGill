@@ -71,6 +71,8 @@ public class DetailActivity extends AppCompatActivity {
         mochi_sakura = findViewById(R.id.quantity_mochi_sakura);
 
         calculate();
+        Log.d("DA", "create");
+
     }
 
     public void getLayout() {
@@ -364,15 +366,42 @@ public class DetailActivity extends AppCompatActivity {
         });
     }
 
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.d("DA", "start");
+//    }
+//
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        Log.d("DA", "restart");
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d("DA", "resume");
+//
+//    }
+
     @Override
     protected void onPause() {
         super.onPause();
-        if(totalItem==0) {
-            Intent intent = new Intent(DetailActivity.this, FoodListActivity.class);
-            startActivity(intent);
-            finish();
-        }
-      }
+//        if(totalItem==0) {
+//            Intent intent = new Intent(DetailActivity.this, FoodListActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
+        Log.d("DA", "pause");
+    }
+
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        Log.d("DA", "stop");
+//    }
+
 }
 
 

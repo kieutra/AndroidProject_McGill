@@ -54,8 +54,8 @@ public class CartActivity extends AppCompatActivity {
         clear=  findViewById(R.id.clear);
         myCart();
         clickClear();
+//        Log.d("CA", "create");
         clearStr="";
-
     }
 
     public void myCart() {
@@ -177,6 +177,35 @@ public class CartActivity extends AppCompatActivity {
             }
         });
     }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.d("CA", "start");
+//    }
+//
+//    @Override
+//    protected void onRestart() {
+//        super.onRestart();
+//        Log.d("CA", "restart");
+//    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d("CA", "resume");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        Log.d("CA", "pause");
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        Log.d("CA", "stop");
+//    }
 }
 
 

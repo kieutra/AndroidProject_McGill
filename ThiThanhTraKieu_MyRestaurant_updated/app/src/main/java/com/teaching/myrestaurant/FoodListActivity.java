@@ -54,6 +54,8 @@ public class FoodListActivity extends AppCompatActivity {
         reloadListView();
         getFrameLayout();
         seeCartAct();
+
+        Log.d("FL", "create");
     }
 
 //Create Listview and Click items in Listview
@@ -68,7 +70,7 @@ public class FoodListActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
                 intent.putExtra("storedLayout", s);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
     }
@@ -99,6 +101,7 @@ public class FoodListActivity extends AppCompatActivity {
         else if (input.equals("banhmi")) createListView(banhmis);
         else if (input.equals("bbtea")) createListView(bbteas);
         else createListView(mochis);
+
     }
 
 //Go to CartActivity
@@ -112,6 +115,12 @@ public class FoodListActivity extends AppCompatActivity {
         });
     }
 
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Log.d("FL", "start");
+//    }
+
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -119,5 +128,32 @@ public class FoodListActivity extends AppCompatActivity {
             //totalMoney =0;
             total.setText("TOTAL: 0.0");
         }
+        Log.d("FL", "restart");
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.startActivity(new Intent(FoodListActivity.this, MainActivity.class));
+        return;
+    }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        Log.d("FL", "resume");
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//
+//        super.onPause();
+//        Log.d("FL", "pause");
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//            Log.d("FL", "stop");
+//    }
 }
