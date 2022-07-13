@@ -17,7 +17,7 @@ public class YelpResponse {
         public String name;
 
         @SerializedName("rating")
-        Float rating;
+        float rating;
 
         @SerializedName("price")
         public String price;

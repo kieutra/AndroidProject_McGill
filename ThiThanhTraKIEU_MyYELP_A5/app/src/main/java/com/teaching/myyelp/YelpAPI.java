@@ -11,9 +11,5 @@ public interface YelpAPI {
     Call<YelpResponse>getUser(@Query("term") String term,
                               @Query("location") String location);
 
-//    @GET("businesses/search")
-//    Call<ArrayList<YelpResponse>>getSushi(@Query("term") String term,
-//                                          @Query("location") String location);
-
 
 }
